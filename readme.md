@@ -34,6 +34,7 @@ This project support multi tenant database. To enable multi tenant database appl
  3. Role based authentication
  4. Login, Registration, Forget Password, Email Verification Implemented.
  5. User and Role creation APIs ready.
+ 6. Pretty Routes (Available at /routes)
 
 #### Versioning
 
