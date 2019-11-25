@@ -64,7 +64,7 @@ class User extends Authenticatable implements JWTSubject
     {
         return [
             'name' => $this->name,
-            'role'=>$this->roles[0]->name
+            'roles'=>$this->roles
         ];
     }
 
@@ -93,38 +93,5 @@ class User extends Authenticatable implements JWTSubject
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role', 'role_user');
-    }
-
-    public function packages()
-    {
-        return $this->belongsToMany('App\Models\Package', 'package_users')->withPivot('enrollment_date', 'expire_date');
-    }
-
-    public function groups()
-    {
-        return $this->belongsToMany('App\Models\Group', 'group_users');
-    }
-
-    public function activePackages()
-    {
-        return $this->belongsToMany('App\Models\Package', 'package_users')->where('expire_date', '>=', date("Y-m-d"))->withPivot('enrollment_date', 'expire_date');
-    }
-
-    public function isEnrolledCourse($course_id)
-    {
-        $query = "select count(*) row_count from courses where id = ".$course_id." and id in (
-                select course_id from package_courses where package_id in (select package_id from package_users where user_id = '".$this->id."' and expire_date >= '".date("Y-m-d H:i:s")."')
-        ) and id in (select course_id from user_courses where course_id = ".$course_id." and user_id = '".$this->id."' )";
-        $result = DB::select($query);
-        return $result[0]->row_count;
-    }
-    public function isAllowedCourse($course_id)
-    {
-        
-        $query = "select count(*) row_count from courses where id = ".$course_id." and id in (
-                select course_id from package_courses where package_id in (select package_id from package_users where user_id = '".$this->id."' and expire_date >= '".date("Y-m-d H:i:s")."')
-        )";
-        $result = DB::select($query);
-        return $result[0]->row_count;
     }
 }

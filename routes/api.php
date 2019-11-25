@@ -30,7 +30,7 @@ Route::group(['prefix' => 'auth'], function ($router) {
     Route::post('change-password', 'Auth\AuthController@changePassword');
     Route::post('logout', 'Auth\AuthController@logout');
     Route::post('refresh', 'Auth\AuthController@refresh');
-    Route::post('me', 'Auth\AuthController@me');
+    Route::get('me', 'Auth\AuthController@me');
 });
 
 // Superadmin Routes

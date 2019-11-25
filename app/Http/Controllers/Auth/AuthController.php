@@ -167,8 +167,11 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function me()
-    {
-        return response()->json(JWTAuth::user());
+    {        
+        $user=JWTAuth::user();
+        $user_data=array('name'=>$user->name,'email'=>$user->email,'roles'=>$user->roles->pluck('name'));
+        
+        return response()->json($user_data);
     }
 
     /**
@@ -202,11 +205,15 @@ class AuthController extends Controller
     protected function respondWithToken($token)
     {
         $user=JWTAuth::user();
+
+        $user_data=array('name'=>$user->name,'email'=>$user->email,'roles'=>$user->roles->pluck('name'));
+
         return response()->json([            
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => JWTAuth::factory()->getTTL() * 60,
-            'user'=>$user
+            'user'=>$user_data,
+            
         ]);
     }
 

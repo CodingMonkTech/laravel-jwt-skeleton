@@ -177,7 +177,6 @@ return [
 
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
         Zizaco\Entrust\EntrustServiceProvider::class,
-        Yajra\DataTables\DataTablesServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         PrettyRoutes\ServiceProvider::class,
