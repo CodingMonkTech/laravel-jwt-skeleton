@@ -1,6 +1,6 @@
 
-# Laravel 5.8 JWT API Skeleton
-Creating Laravel 5.8 API is now super easy, you don't need to setup everything from scratch. Just clone this repository and start developing api with one of best PHP framework - Laravel 5.8
+# Laravel 6.0 JWT API Skeleton
+Creating Laravel 6.0 API is now super easy, you don't need to setup everything from scratch. Just clone this repository and start developing api with one of best PHP framework - Laravel 6.0
 
 [![GitHub license](https://img.shields.io/badge/license-GPLv2%2B-blue.svg)]()
 
